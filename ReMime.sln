@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReMime", "ReMime\ReMime.csproj", "{05FAB3CF-78AF-4D34-97D1-C3AB24D4C59F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReMime.Tests", "ReMime.Tests\ReMime.Tests.csproj", "{FEEB5BAD-3B18-4A88-A212-32EC9DA93BDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReMime.Cli", "ReMime.Cli\ReMime.Cli.csproj", "{51AB44A2-D4EB-4CC8-BE4E-EF1912350629}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05FAB3CF-78AF-4D34-97D1-C3AB24D4C59F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05FAB3CF-78AF-4D34-97D1-C3AB24D4C59F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05FAB3CF-78AF-4D34-97D1-C3AB24D4C59F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05FAB3CF-78AF-4D34-97D1-C3AB24D4C59F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEB5BAD-3B18-4A88-A212-32EC9DA93BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEB5BAD-3B18-4A88-A212-32EC9DA93BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEB5BAD-3B18-4A88-A212-32EC9DA93BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEB5BAD-3B18-4A88-A212-32EC9DA93BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51AB44A2-D4EB-4CC8-BE4E-EF1912350629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51AB44A2-D4EB-4CC8-BE4E-EF1912350629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51AB44A2-D4EB-4CC8-BE4E-EF1912350629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51AB44A2-D4EB-4CC8-BE4E-EF1912350629}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
