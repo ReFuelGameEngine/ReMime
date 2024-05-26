@@ -47,10 +47,7 @@ namespace ReMime.Platform
 
         public bool TryResolve(string extension, out MediaType? mediaType)
         {
-            if (_extensionsMap.TryGetValue(extension, out mediaType))
-                return true;
-            else
-                return false;
+            return _extensionsMap.TryGetValue(extension, out mediaType);
         }
 
         private static readonly char[] s_delimeters = new char[] { '\t', ' ' };

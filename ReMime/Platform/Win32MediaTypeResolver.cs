@@ -52,15 +52,7 @@ namespace ReMime.Platform
 
         public bool TryResolve(string extension, out MediaType? mediaType)
         {
-            if (_extensionsMap.TryGetValue(extension, out mediaType))
-            {
-                return true;
-            }
-            else
-            {
-                mediaType = null;
-                return true;
-            }
+            return _extensionsMap.TryGetValue(extension, out mediaType);
         }
     }
 }
