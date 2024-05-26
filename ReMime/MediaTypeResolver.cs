@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using ReMime.ContentResolvers;
 using ReMime.Platform;
 
 namespace ReMime
@@ -40,6 +41,8 @@ namespace ReMime
 
         static MediaTypeResolver()
         {
+            AddResolver(new MagicContentResolver(), 9998);
+
             if (OperatingSystem.IsWindows())
             {
                 AddResolver(new Win32MediaTypeResolver());
