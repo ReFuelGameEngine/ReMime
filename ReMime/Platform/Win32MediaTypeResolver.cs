@@ -5,6 +5,9 @@ using Microsoft.Win32;
 
 namespace ReMime.Platform
 {
+    /// <summary>
+    /// Media type resolver for Windows systems.
+    /// </summary>
     public class Win32MediaTypeResolver : IMediaTypeResolver
     {
         private readonly Dictionary<string, MediaType> _extensionsMap = new Dictionary<string, MediaType>();

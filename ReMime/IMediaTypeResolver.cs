@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace ReMime
 {
+    /// <summary>
+    /// Interface for all media type resolvers.
+    /// </summary>
     public interface IMediaTypeResolver
     {
         /// <summary>

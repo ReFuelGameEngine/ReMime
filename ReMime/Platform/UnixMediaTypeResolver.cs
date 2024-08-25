@@ -5,6 +5,9 @@ using System.IO;
 
 namespace ReMime.Platform
 {
+    /// <summary>
+    /// Media type resolver for *nix systems that have a "/etc/mime.types" file.
+    /// </summary>
     public class UnixMediaTypeResolver : IMediaTypeResolver
     {
         private readonly Dictionary<string, MediaType> _extensionsMap = new Dictionary<string, MediaType>();

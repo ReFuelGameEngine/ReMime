@@ -4,6 +4,9 @@ using System.IO;
 
 namespace ReMime
 {
+    /// <summary>
+    /// Interface for all media type resolvers that inspect content.
+    /// </summary>
     public interface IMediaContentResolver : IMediaTypeResolver
     {
         /// <summary>

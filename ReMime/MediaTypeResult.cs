@@ -2,6 +2,9 @@ using System;
 
 namespace ReMime
 {
+    /// <summary>
+    /// The result of a combined media type query.
+    /// </summary>
     [Flags]
     public enum MediaTypeResult
     {
