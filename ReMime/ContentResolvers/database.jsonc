@@ -1,0 +1,62 @@
+/**
+ * ReMime Magic Value & File Extension Database
+ * ---------------------------------------------
+ * This is a self compiled list of magic values, file extensions and
+ * their mime-types. Please contribute common file formats if you come
+ * across them.
+ *
+ * This file is only for common file formats that do not need any extra
+ * detection logic. Do not add major container formats like ZIP or RIFF
+ * into this list.
+ */
+[
+    // #region application/*    
+    { "type": "application/vnd.rar", "magic": [ "'Rar!'1a07" ], "extensions": [ "rar" ] },
+    { "type": "application/postscript", "magic": [ "'%!PS'"], "extensions": [ "ps", "eps", "epsf" ] },
+    { "type": "application/pdf", "magic": ["'%PDF-'"], "extensions": [ "pdf" ] },
+    // #endregion
+
+    // #region audio/*
+    { "type": "audio/mp3", "magic": [ "fffb", "fff3", "fff2", "'ID3'" ], "extensions": [ "mp3" ] },
+    { "type": "audio/flac", "magic": [ "'fLaC'" ], "extensions": [ "flac" ] },
+    { "type": "audio/midi", "magic": [ "'MThd'" ], "extensions": [ "mid", "midi" ] },
+    // #endregion
+
+    // #region font/*
+    { "type": "font/woff", "magic": [ "'wOFF'" ], "extensions": [ "woff" ] },
+    { "type": "font/woff2", "magic": [ "'wOF2'" ], "extensions": [ "woff2" ] },
+    { "type": "font/ttf", "magic": [ "0001000000" ], "extensions": [ "ttf", "tte", "dfont" ] },
+    { "type": "font/otf", "magic": [ "'OTTO'" ], "extensions": [ "otf" ]},
+    // #endregion
+
+    // #region image/*
+    { "type": "image/bmp",  "magic": [ "'BM'" ], "extensions": [ "bmp" ] },
+    { "type": "image/gif",  "magic": [ "'GIF8'" ], "extensions": [ "gif" ] },
+    { "type": "image/tiff", "magic": [ "'IIN1'", "4d4d002a", "49492a00"], "extensions": [ "tiff", "tif", "nif" ] },
+    { "type": "image/png",  "magic": [ "89'PNG'" ], "extensions": [ "png" ] },
+    { "type": "image/emf",  "magic": [ "01000000" ], "extensions": [ "emf" ] },
+    { "type": "image/wmf",  "magic": [ "d7cdc69a" ], "extensions": [ "wmf" ] },
+    { "type": "image/x-ico", "magic": [ "00000100" ], "extensions": [ "ico" ] },
+    { "type": "image/x-qoi", "magic": [ "'qoif'" ], "extensions": [ "qoi" ]},
+
+    // The JPEG standard allows any magic value from ffd8ffe0 to ffd8ffff.
+    {
+        "type": "image/jpeg",
+        "magic": [
+            "ffd8ffe0", "ffd8ffe1", "ffd8ffe2", "ffd8ffe3",
+            "ffd8ffe4", "ffd8ffe5", "ffd8ffe6", "ffd8ffe7",
+            "ffd8ffe8", "ffd8ffe9", "ffd8ffea", "ffd8ffeb",
+            "ffd8ffec", "ffd8ffed", "ffd8ffee", "ffd8ffef",
+            "ffd8fff0", "ffd8fff1", "ffd8fff2", "ffd8fff3",
+            "ffd8fff4", "ffd8fff5", "ffd8fff6", "ffd8fff7",
+            "ffd8fff8", "ffd8fff9", "ffd8fffa", "ffd8fffb",
+            "ffd8fffc", "ffd8fffd", "ffd8fffe", "ffd8ffff"
+        ],
+        "extensions": [ "jpeg", "jpg"]
+    },
+    // #endregion
+
+    // #region text/*
+    { "type": "text/rtf", "magic": [ "'{\\rtf1'" ], "extensions": [ "rtf" ]}
+    // #endregion
+]

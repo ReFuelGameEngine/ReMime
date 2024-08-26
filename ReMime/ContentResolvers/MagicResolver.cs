@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 
 namespace ReMime.ContentResolvers
 {
-    public record MagicValueMediaType(MagicValue Magic, MediaType MediaType);
+    public record MagicValueMediaType(MediaType MediaType, MagicValue[] MagicValues, string[] Extensions);
 
     public class MagicContentResolver : IMediaContentResolver
     {
@@ -21,14 +22,25 @@ namespace ReMime.ContentResolvers
 
         public MagicContentResolver()
         {
-            Image.ImageMagicValues.AddToMagicResolver(this);
+            List<MagicValueDatabaseEntry> entries;
+            
+            using (Stream str = typeof(MagicContentResolver).Assembly.GetManifestResourceStream("ReMime.ContentResolvers.database.jsonc")!)
+            {
+                entries = MagicValueDatabaseEntry.GetEntries(str);
+            }
+
+            AddMagicValues(entries.Select(x => (MagicValueMediaType)x));
         }
 
         public IReadOnlyCollection<MediaType> MediaTypes => _mediaTypes.AsReadOnly();
 
         public void AddMagicValue(MagicValueMediaType value)
         {
-            _maxBytes = Math.Max(_maxBytes, value.Magic.Value.Length);
+            if (value.MagicValues.Length != 0)
+            {
+                _maxBytes = Math.Max(_maxBytes, value.MagicValues.Select(x => x.Value.Length).Max());
+            }
+
             _mediaTypes.Add(value.MediaType);
             _tree.Add(value);
 
@@ -83,17 +95,14 @@ namespace ReMime.ContentResolvers
             {
                 get
                 {
-                    if (bytes.Length == 0)
+                    if (bytes.Length == 0 || Children == null)
                         return Node;
-
-                    if (Children == null)
-                        return null;
 
                     byte b = bytes[0];
 
                     if (!Children.TryGetValue(b, out Tree? subtree))
                     {
-                        return null;
+                        return Node;
                     }
 
                     return subtree[bytes.Slice(1)];
@@ -124,8 +133,10 @@ namespace ReMime.ContentResolvers
 
             public void Add(MagicValueMediaType magic)
             {
-                ReadOnlySpan<byte> bytes = magic.Magic.Value;
-                AddInternal(magic, bytes);
+                foreach (var entry in magic.MagicValues)
+                {
+                    AddInternal(magic, entry.Value);
+                }
             }
         }
     }
