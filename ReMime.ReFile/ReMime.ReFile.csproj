@@ -36,7 +36,8 @@
   <ItemGroup>
     <PackageReference Include="ReFuel.ReMime" Version="0.1.0" />
 
-    <Content Include="../*.md" Pack="true" PackagePath="/" />
+    <Content Include="README.md" Pack="true" PackagePath="/" />
+    <Content Include="../LICENSE.md" Pack="true" PackagePath="/" />
     <None Include="../remime_favicon.png" Pack="true" PackagePath="images\icon.png"/>
   </ItemGroup>
 </Project>
