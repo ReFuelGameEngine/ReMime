@@ -19,4 +19,5 @@ implementations.
 Contributing
 ------------
 Feel free to contribute your own file type resolvers and bug fixes. The more
-file types that can be detected accurately, the better.
+file types that can be detected accurately, the better. Currently the
+repository is available at https://git.mixedup.dev/ReFuel/ReMime. Accepting [email patches](<mailto:sht7ntgni@mozmail.com>).
