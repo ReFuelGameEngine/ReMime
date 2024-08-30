@@ -1,14 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!--NuGet-->
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>ReFuel.ReMime</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>H. Utku Maden</Authors>
+    <Company>ReFuel</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>images\icon.png</PackageIcon>
+    <PackageProjectUrl>https://refuel.mixedup.dev/docs/ReMime.html</PackageProjectUrl>
+    <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReMime</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>detection; detector; type; file; mime; mime-type; media; media-type; analysis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="ContentResolvers/database.jsonc" />
     <EmbeddedResource Include="ContentResolvers/riff.jsonc" />
-  </ItemGroup>
 
+    <Content Include="../*.md" Pack="true" PackagePath="/" />
+    <None Include="../remime_favicon.png" Pack="true" PackagePath="images\icon.png"/>
+  </ItemGroup>
 </Project>

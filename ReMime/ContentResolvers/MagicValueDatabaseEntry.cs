@@ -7,7 +7,6 @@ using System.Text.Json.Serialization;
 
 namespace ReMime.ContentResolvers
 {
-    [JsonSerializable(typeof(MagicValueDatabaseEntry))]
     public class MagicValueDatabaseEntry
     {
         [JsonPropertyName("type")]
