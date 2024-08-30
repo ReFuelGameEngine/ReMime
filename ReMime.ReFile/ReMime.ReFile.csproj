@@ -9,7 +9,7 @@
     <!--NuGet-->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.ReMime.ReFile</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>H. Utku Maden</Authors>
     <Company>ReFuel</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -34,7 +34,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ReFuel.ReMime" Version="0.1.0" />
+    <PackageReference Include="ReFuel.ReMime" Version="0.1.1" />
 
     <Content Include="README.md" Pack="true" PackagePath="/" />
     <Content Include="../LICENSE.md" Pack="true" PackagePath="/" />

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
+using Microsoft.VisualBasic;
 
 namespace ReMime.Cli
 {
@@ -47,7 +49,10 @@ namespace ReMime.Cli
         [DoesNotReturn]
         private static void ListTypes()
         {
-            foreach (MediaType type in MediaTypeResolver.KnownTypes)
+            var list = MediaTypeResolver.KnownTypes.ToList();
+            list.Sort();
+
+            foreach (MediaType type in list)
             {
                 Console.WriteLine("{0}\t{1}", type.FullTypeNoParameters, string.Join(' ', type.Extensions));
             }

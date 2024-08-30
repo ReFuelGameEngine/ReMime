@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.Win32;
 
@@ -13,7 +14,7 @@ namespace ReMime.Platform
         private readonly Dictionary<string, MediaType> _extensionsMap = new Dictionary<string, MediaType>();
         public IReadOnlyCollection<MediaType> MediaTypes { get; }
         
-        public Win32MediaTypeResolver()
+        private Win32MediaTypeResolver()
         {
             if (!OperatingSystem.IsWindows())
                 throw new PlatformNotSupportedException();
@@ -56,6 +57,20 @@ namespace ReMime.Platform
         public bool TryResolve(string extension, out MediaType? mediaType)
         {
             return _extensionsMap.TryGetValue(extension, out mediaType);
+        }
+
+        public static Win32MediaTypeResolver? Instance { get; } = null;
+
+        static Win32MediaTypeResolver()
+        {
+            try
+            {
+                Instance = new Win32MediaTypeResolver();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }

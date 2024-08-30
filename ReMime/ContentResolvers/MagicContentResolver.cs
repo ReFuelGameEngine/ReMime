@@ -6,30 +6,28 @@ using System.Linq;
 
 namespace ReMime.ContentResolvers
 {
-    public record MagicValueMediaType(MediaType MediaType, MagicValue[] MagicValues, string[] Extensions);
+    public record MagicValueMediaType(MediaType MediaType, MagicValue[] MagicValues)
+    {
+        public IReadOnlyCollection<string> Extensions { get; } = MediaType.Extensions;
+    }
 
-    public class MagicContentResolver : IMediaContentResolver
+    public class MagicContentResolver : IMediaContentResolver, IMagicValueResolver
     {
         private readonly List<MediaType> _mediaTypes = new List<MediaType>();
         private readonly Dictionary<string, MediaType> _extensions = new Dictionary<string, MediaType>();
         private readonly Tree _tree = new Tree();
         private int _maxBytes = 0;
 
-        public MagicContentResolver(IEnumerable<MagicValueMediaType> values) : this()
+        private MagicContentResolver()
         {
-            AddMagicValues(values);
-        }
-
-        public MagicContentResolver()
-        {
-            List<MagicValueDatabaseEntry> entries;
+            IEnumerable<MagicValueMediaType> entries;
             
             using (Stream str = typeof(MagicContentResolver).Assembly.GetManifestResourceStream("ReMime.ContentResolvers.database.jsonc")!)
             {
                 entries = MagicValueDatabaseEntry.GetEntries(str);
             }
 
-            AddMagicValues(entries.Select(x => (MagicValueMediaType)x));
+            AddMagicValues(entries);
         }
 
         public IReadOnlyCollection<MediaType> MediaTypes => _mediaTypes.AsReadOnly();
@@ -85,6 +83,8 @@ namespace ReMime.ContentResolvers
         {
             return _extensions.TryGetValue(extension, out mediaType);            
         }
+
+        public static MagicContentResolver Instance { get; } = new MagicContentResolver();
 
         private class Tree
         {

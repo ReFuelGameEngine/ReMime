@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.IO;
 
 namespace ReMime.Platform
@@ -13,7 +14,7 @@ namespace ReMime.Platform
         private readonly Dictionary<string, MediaType> _extensionsMap = new Dictionary<string, MediaType>();
         public IReadOnlyCollection<MediaType> MediaTypes { get; }
 
-        public UnixMediaTypeResolver()
+        private UnixMediaTypeResolver()
         {
             {
                 bool valid = OperatingSystem.IsLinux() || OperatingSystem.IsMacOS() || OperatingSystem.IsFreeBSD();
@@ -51,6 +52,20 @@ namespace ReMime.Platform
         public bool TryResolve(string extension, out MediaType? mediaType)
         {
             return _extensionsMap.TryGetValue(extension, out mediaType);
+        }
+
+        public static UnixMediaTypeResolver? Instance { get; } = null;
+
+        static UnixMediaTypeResolver()
+        {
+            try
+            {
+                Instance = new UnixMediaTypeResolver();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         private static readonly char[] s_delimeters = new char[] { '\t', ' ' };

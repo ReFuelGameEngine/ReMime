@@ -18,24 +18,24 @@ namespace ReMime.ContentResolvers
         [JsonPropertyName("extensions")]
         public List<string> Extensions { get; set; } = new List<string>();
 
-        public static List<MagicValueDatabaseEntry> GetEntries(Stream str)
+        public static IEnumerable<MagicValueMediaType> GetEntries(Stream str)
         {
             return JsonSerializer.Deserialize<List<MagicValueDatabaseEntry>>(str, new JsonSerializerOptions()
             {
                 AllowTrailingCommas = true,
                 ReadCommentHandling = JsonCommentHandling.Skip
-            }) ?? throw new Exception();
+            })?.Select(x => (MagicValueMediaType)x)
+            ?? throw new Exception();
         }
 
         public static explicit operator MagicValueMediaType(MagicValueDatabaseEntry entry)
         {
             return new MagicValueMediaType(
-                new MediaType(entry.Type),
+                new MediaType(entry.Type, entry.Extensions),
                 entry.Magic.Select(x => (MagicValue.TryParse(x, out var value), value))
                            .Where(x => x.Item1)
                            .Select(x => (MagicValue)x.value!)
-                           .ToArray(),
-                entry.Extensions.ToArray()
+                           .ToArray()
             );
         }
     }

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace ReMime.ContentResolvers
 {
-    public class RiffResolver : IMediaTypeResolver, IMediaContentResolver
+    public class RiffResolver : IMediaContentResolver, IMagicValueResolver
     {
         public readonly List<MediaType> _mediaTypes = new List<MediaType>();
         public readonly Dictionary<string, MediaType> _extensions = new Dictionary<string, MediaType>();
@@ -15,27 +15,26 @@ namespace ReMime.ContentResolvers
 
         public IReadOnlyCollection<MediaType> MediaTypes { get; }
 
-        public RiffResolver()
+        private RiffResolver()
         {
             MediaTypes = _mediaTypes.AsReadOnly();
 
-            List<MagicValueDatabaseEntry> entries;
+            IEnumerable<MagicValueMediaType> entries;
             
             using (Stream str = typeof(MagicContentResolver).Assembly.GetManifestResourceStream("ReMime.ContentResolvers.riff.jsonc")!)
             {
                 entries = MagicValueDatabaseEntry.GetEntries(str);
             }
 
-            foreach (var entry in entries)
-            {
-                AddRiffType((MagicValueMediaType)entry);
-            }
+            AddMagicValues(entries);
         }
 
-        public RiffResolver(IEnumerable<MagicValueMediaType> values) : this()
+        public void AddMagicValues(IEnumerable<MagicValueMediaType> entries)
         {
-            foreach (MagicValueMediaType value in values)
-                AddRiffType(value);
+            foreach (var entry in entries)
+            {
+                AddMagicValue(entry);
+            }
         }
 
         public bool TryResolve(Stream str, [NotNullWhen(true)] out MediaType? mediaType)
@@ -69,7 +68,7 @@ namespace ReMime.ContentResolvers
         /// Add a RIFF sub-magic value to this resolver.
         /// </summary>
         /// <param name="type"></param>
-        public void AddRiffType(MagicValueMediaType type)
+        public void AddMagicValue(MagicValueMediaType type)
         {
             if (type.MagicValues.Length == 0)
                 throw new ArgumentException("Expected at least one media type.");
@@ -91,6 +90,8 @@ namespace ReMime.ContentResolvers
                 _magicValues.Add(i, type.MediaType);
             }
         }
+
+        public static RiffResolver Instance { get; } = new RiffResolver();
 
         [StructLayout(LayoutKind.Auto, Size = 12)]
         private struct RiffChunk

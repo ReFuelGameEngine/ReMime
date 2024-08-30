@@ -50,22 +50,13 @@ namespace ReMime
 
         static MediaTypeResolver()
         {
-            AddResolver(new RiffResolver(), 9997);
-            AddResolver(new MagicContentResolver(), 9998);
+            AddResolver(RiffResolver.Instance, 1000);
+            AddResolver(MagicContentResolver.Instance, 1001);
 
-            if (OperatingSystem.IsWindows())
-            {
-                AddResolver(new Win32MediaTypeResolver());
-            }
-            else if (OperatingSystem.IsLinux())
-            {
-                AddResolver(new UnixMediaTypeResolver());
-                // TODO: add freedesktop mime type database.
-            }
-            else if (OperatingSystem.IsMacOS())
-            {
-                AddResolver(new UnixMediaTypeResolver()); //?
-            }
+            if (Win32MediaTypeResolver.Instance != null)
+                AddResolver(Win32MediaTypeResolver.Instance, 1002);
+            if (UnixMediaTypeResolver.Instance != null)
+                AddResolver(UnixMediaTypeResolver.Instance, 1002);
         }
 
         /// <summary>

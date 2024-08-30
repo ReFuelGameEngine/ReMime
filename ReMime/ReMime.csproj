@@ -8,7 +8,7 @@
     <!--NuGet-->
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ReFuel.ReMime</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>H. Utku Maden</Authors>
     <Company>ReFuel</Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
