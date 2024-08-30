@@ -7,13 +7,13 @@ namespace ReMime.Cli
 {
     public static class Program
     {
-        private const string USAGE = "remime [-r] file/directory/-...\n" +
-                                     "remime --help for more help.";
+        private const string USAGE = "refile [-r] file/directory/-...\n" +
+                                     "refile --help for more help.";
 
         private const string HELP =
             "ReMime Command Line Tool - Determine file Media Type\n" +
             "\n" +
-            "    remime [-r] file/directory/-...\n" +
+            "    refile [-r] file/directory/-...\n" +
             "\n" +
             "    file       infer a file\n"+
             "    directory  infer files in directory. Requires -r\n"+

@@ -1,17 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\ReMime\ReMime.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <SelfContained>true</SelfContained>
-    <PublishSingleFile>true</PublishSingleFile>
     <AssemblyName>refile</AssemblyName>
+
+    <!--NuGet-->
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>ReFuel.ReMime.ReFile</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>H. Utku Maden</Authors>
+    <Company>ReFuel</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageIcon>images\icon.png</PackageIcon>
+    <PackageProjectUrl>https://refuel.mixedup.dev/docs/ReMime.html</PackageProjectUrl>
+    <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReMime</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>detection; detector; type; file; mime; mime-type; media; media-type; analysis; tool; refile</PackageTags>
+    <PackageDescription>
+      ReMime is a very humble library that can identify IANA media types of file
+      from their file extension and its content. While being fully extensible
+      with your own resolvers, ReMime will also refer to your operating system's
+      file type database when resolving files.
+
+      This is an example project a tool that will resolve the media types of the
+      given list of files and directories.
+    </PackageDescription>
+    <PackageType>DotnetTool</PackageType>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>refile</ToolCommandName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ReFuel.ReMime" Version="0.1.0" />
+
+    <Content Include="../*.md" Pack="true" PackagePath="/" />
+    <None Include="../remime_favicon.png" Pack="true" PackagePath="images\icon.png"/>
+  </ItemGroup>
 </Project>
