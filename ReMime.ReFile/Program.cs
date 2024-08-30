@@ -50,7 +50,7 @@ namespace ReMime.Cli
         private static void ListTypes()
         {
             var list = MediaTypeResolver.KnownTypes.ToList();
-            list.Sort();
+            list.Sort((a,b) => StringComparer.InvariantCulture.Compare(a.FullType, b.FullType));
 
             foreach (MediaType type in list)
             {
