@@ -12,7 +12,7 @@ Platform Caveats
 * On Linux, not all `/etc/mime.types` syntax is supported.
 * None of this was written with MacOS in mind. But maybe it'll work?
 
-Refer to `ReMime.Cli` as an example of how to use the library. Refer to in line
+Refer to `ReMime.ReFile` as an example of how to use the library. Refer to in line
 documentation and the given default resolvers as an example resolver to
 implementations.
 
