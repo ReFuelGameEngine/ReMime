@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="ContentResolvers/database.jsonc" />
+    <EmbeddedResource Include="ContentResolvers/riff.jsonc" />
   </ItemGroup>
 
 </Project>

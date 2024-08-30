@@ -1,0 +1,21 @@
+/*
+ * ReMime RIFF file types database.
+ * This is a self compiled list of magic values, file extensions and
+ * their media-types. Please contribute common file formats if you come
+ * across them.
+ *
+ * This file is only for RIFF based formats. Please do not add magic values
+ * for other file types here, as the magic values in this file are used     
+ */
+[
+    { "type": "video/avi", "magic": ["'AVI '"], "extensions": ["avi"]},
+    { "type": "audio/wav", "magic": ["'WAVE'"], "extensions": ["wav"] },
+    { "type": "image/vnd.microsoft.icon", "magic": ["'ACON'"], "extensions": ["ani"] },
+
+    // Whilst we speak about WEBP...
+    // My kindest f*ck you to Google for impeding standards like JPEG-XL
+    // for their own benefit. WEBP itself might be a fine file format
+    // but I do not support it if you maliciously stop implementing other
+    // file formats into your browsers and applications.
+    { "type": "image/webp", "magic": ["'WEBP'"], "extensions": ["webp"] }
+]

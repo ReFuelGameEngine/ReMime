@@ -50,6 +50,7 @@ namespace ReMime
 
         static MediaTypeResolver()
         {
+            AddResolver(new RiffResolver(), 9997);
             AddResolver(new MagicContentResolver(), 9998);
 
             if (OperatingSystem.IsWindows())
