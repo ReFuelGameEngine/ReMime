@@ -15,7 +15,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>images\icon.png</PackageIcon>
-    <PackageProjectUrl>https://refuel.mixedup.dev/docs/ReMime.html</PackageProjectUrl>
+    <PackageProjectUrl>https://refuel.mixedup.dev/docs/ReFile.html</PackageProjectUrl>
     <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReMime</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>detection; detector; type; file; mime; mime-type; media; media-type; analysis; tool; refile</PackageTags>
