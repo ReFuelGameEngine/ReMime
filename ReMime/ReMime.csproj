@@ -18,6 +18,12 @@
     <RepositoryUrl>https://git.mixedup.dev/ReFuel/ReMime</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>detection; detector; type; file; mime; mime-type; media; media-type; analysis</PackageTags>
+    <PackageDescription>
+      ReMime is a very humble library that can identify IANA media types of file
+      from their file extension and its content. While being fully extensible
+      with your own resolvers, ReMime will also refer to your operating system's
+      file type database when resolving files.
+    </PackageDescription>
   </PropertyGroup>
 
   <ItemGroup>
